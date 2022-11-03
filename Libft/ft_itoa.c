@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 00:01:10 by opelser       #+#    #+#                 */
-/*   Updated: 2022/11/01 17:26:32 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/02 18:40:23 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,9 @@ char	*ft_itoa(int n)
 	return (res);
 }
 
+// #include <stdio.h>
 // int	main()
 // {
-// 	printf("\nfinal result: %s\n", ft_itoa(0));
+// 	printf("\n\nfinal result: %s\n", ft_itoa(234345));
 // 	return(0);
 // }

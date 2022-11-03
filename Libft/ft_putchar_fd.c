@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_split.c                                         :+:    :+:            */
+/*   ft_putchar_fd.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/28 00:00:19 by opelser       #+#    #+#                 */
-/*   Updated: 2022/11/03 23:19:47 by opelser       ########   odam.nl         */
+/*   Created: 2022/11/03 16:41:33 by opelser       #+#    #+#                 */
+/*   Updated: 2022/11/03 16:46:59 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+// #include <stdio.h>
 
-char	**ft_split(char const *s, char c)
+void	ft_putchar_fd(char c, int fd)
 {
-	
+	write(fd, &c, 1);
 }
