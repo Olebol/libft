@@ -4,7 +4,7 @@ CC := gcc
 
 CFLAGS := -Wall -Werror -Wextra
 
-BUILDDIR := build
+BUILDDIR := obj
 
 SRC :=	ft_isalnum.c	\
 		ft_isascii.c	\

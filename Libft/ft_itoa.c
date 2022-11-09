@@ -6,34 +6,13 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 00:01:10 by opelser       #+#    #+#                 */
-/*   Updated: 2022/11/02 18:40:23 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/08 22:21:21 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrev(char *s)
-{
-	char		tmp;
-	int			i;
-	int			len;
-
-	i = 0;
-	len = ft_strlen(s) - 1;
-	if (s[i] == '-')
-		i++;
-	while (i < len)
-	{
-		tmp = s[i];
-		s[i] = s[len];
-		s[len] = tmp;
-		i++;
-		len--;
-	}
-	return (s);
-}
-
-int	ft_intlen(int n)
+static int	ft_intlen(int n)
 {
 	int		len;
 
@@ -51,30 +30,22 @@ int	ft_intlen(int n)
 	return (len);
 }
 
-void	ft_makearr(char *res, long n)
+static void	ft_makearr(char *res, long n, int i)
 {
-	int		i;
-
-	i = 0;
+	res[i + 1] = '\0';
 	if (n == 0)
-	{
 		res[i] = '0';
-		i++;
-	}
 	if (n < 0)
 	{
 		n *= -1;
-		res[i] = '-';
-		i++;
+		res[0] = '-';
 	}
 	while (n)
 	{
 		res[i] = n % 10 + 48;
 		n /= 10;
-		i++;
+		i--;
 	}
-	res[i] = '\0';
-	ft_strrev(res);
 }
 
 char	*ft_itoa(int n)
@@ -85,13 +56,12 @@ char	*ft_itoa(int n)
 	res = malloc(len + 1);
 	if (!res)
 		return (NULL);
-	ft_makearr(res, n);
+	ft_makearr(res, n, len - 1);
 	return (res);
 }
 
-// #include <stdio.h>
 // int	main()
 // {
-// 	printf("\n\nfinal result: %s\n", ft_itoa(234345));
+// 	printf("\n\nfinal result: %s\n", ft_itoa(INT32_MIN));
 // 	return(0);
 // }

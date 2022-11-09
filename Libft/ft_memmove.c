@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 14:56:29 by opelser       #+#    #+#                 */
-/*   Updated: 2022/10/18 22:35:47 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/08 22:59:56 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	void			*org;
-	unsigned char	*ucdst;
-	unsigned char	*ucsrc;
+	unsigned char	*uc_dst;
+	unsigned char	*uc_src;
 
-	ucdst = (unsigned char *)dst;
-	ucsrc = (unsigned char *)src;
+	uc_dst = (unsigned char *)dst;
+	uc_src = (unsigned char *)src;
 	org = dst;
 	if (dst < src)
 		while (len--)
-			*ucdst++ = *ucsrc++;
+			*uc_dst++ = *uc_src++;
 	else if (dst > src)
 	{
-		ucdst += len - 1;
-		ucsrc += len - 1;
+		uc_dst += len - 1;
+		uc_src += len - 1;
 		while (len--)
-			*ucdst-- = *ucsrc--;
+			*uc_dst-- = *uc_src--;
 	}
 	return (org);
 }

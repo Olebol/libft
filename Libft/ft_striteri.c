@@ -6,12 +6,11 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/03 16:12:35 by opelser       #+#    #+#                 */
-/*   Updated: 2022/11/03 16:39:33 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/08 22:22:04 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-// #include <stdio.h>
 
 // void	ft_test(unsigned int i, char *s_char)
 // {

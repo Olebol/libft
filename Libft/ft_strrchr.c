@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/19 19:50:38 by opelser       #+#    #+#                 */
-/*   Updated: 2022/10/20 15:41:15 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/08 22:56:23 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strrchr(const char *s, int c)
 			return ((char *)(s + i));
 		i--;
 	}
-	return (0);
+	return (NULL);
 }
 
 // #include <stdio.h>

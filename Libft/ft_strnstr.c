@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/20 18:56:41 by opelser       #+#    #+#                 */
-/*   Updated: 2022/11/01 20:46:38 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/08 22:56:16 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 				return ((char *) haystack + i);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
 
 /*

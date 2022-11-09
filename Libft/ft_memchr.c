@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/20 15:43:25 by opelser       #+#    #+#                 */
-/*   Updated: 2022/10/20 18:09:37 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/08 23:00:25 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ void	*ft_memchr(const void *s, int c, size_t n)
 		n--;
 		s++;
 	}
-	return (0);
+	return (NULL);
 }

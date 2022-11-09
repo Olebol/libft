@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/24 17:06:26 by opelser       #+#    #+#                 */
-/*   Updated: 2022/10/24 20:17:33 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/08 22:44:19 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	ft_atoi(const char *str)
 	return (result * negative);
 }
 
-// #include <stdio.h>
 // #include "libft.h"
 // int	main()
 // {

@@ -6,9 +6,11 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/19 19:33:52 by opelser       #+#    #+#                 */
-/*   Updated: 2022/10/19 19:52:25 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/08 22:53:53 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "stddef.h"
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -20,5 +22,5 @@ char	*ft_strchr(const char *s, int c)
 	}
 	if (*s == (char) c)
 		return ((char *)s);
-	return (0);
+	return (NULL);
 }

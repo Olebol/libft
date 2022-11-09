@@ -6,22 +6,15 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/04 18:31:51 by opelser       #+#    #+#                 */
-/*   Updated: 2022/10/24 19:23:38 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/08 23:02:51 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t		i;
-
-	i = 0;
-	while (n > i)
-	{
-		((char *)s)[i] = '\0';
-		i++;
-	}
+	ft_memset(s, '\0', n);
 }
 
 // #include <stdio.h>
