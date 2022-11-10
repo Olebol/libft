@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/19 15:24:09 by opelser       #+#    #+#                 */
-/*   Updated: 2022/10/19 19:28:02 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/10 23:57:23 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,3 +16,11 @@ int	ft_toupper(int c)
 		c -= 32;
 	return (c);
 }
+
+// #include "libft.h"
+// int	main(void)
+// {
+// 	printf("my: %c", ft_toupper('a'));
+// 	printf("\nactual: %c\n", toupper('a'));
+// 	return (0);
+// }

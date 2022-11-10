@@ -39,19 +39,19 @@ SRC :=	ft_isalnum.c	\
 		ft_putchar_fd.c	\
 		ft_putstr_fd.c	\
 		ft_putendl_fd.c	\
-		ft_putnbr_fd.c	\
+		ft_putnbr_fd.c
 
 OBJ := ${addprefix ${BUILDDIR}/, ${SRC:.c=.o}}
 
 all: ${NAME}
 
 ${NAME}: ${OBJ}
-	@ar rc ${NAME} ${OBJ}
+	@ar rc ${NAME} $^
 
 ${BUILDDIR}:
 	@mkdir ${BUILDDIR}
 
-${BUILDDIR}/%.o: %.c ${BUILDDIR}/
+${BUILDDIR}/%.o: %.c | ${BUILDDIR}
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
@@ -64,3 +64,5 @@ fclean: clean
 re:
 	@${MAKE} fclean
 	@${MAKE} ${NAME}
+
+.PHONY: all clean fclean re

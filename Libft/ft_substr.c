@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/24 20:23:13 by opelser       #+#    #+#                 */
-/*   Updated: 2022/11/08 22:56:03 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/10 23:49:39 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*ptr;
 
-	if (s == 0)
-		return (0);
+	if (!s)
+		return (NULL);
 	if (start >= (ft_strlen(s)))
 		return (ft_strdup(""));
 	if (len > (ft_strlen(s) - start))
