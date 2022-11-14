@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/24 23:33:42 by opelser       #+#    #+#                 */
-/*   Updated: 2022/11/08 22:57:26 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/14 17:53:41 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*ptr;
 
+	if (!s1 || !s2)
+		return (NULL);
 	ptr = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!ptr)
 		return (NULL);

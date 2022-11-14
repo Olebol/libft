@@ -28,3 +28,11 @@ char	*ft_strdup(const char *s1)
 	ft_strlcpy(ptr, s1, ft_strlen(s1) + 1);
 	return (ptr);
 }
+
+// #include "libft.h"
+// int	main(void)
+// {
+// 	const char	s[] = "this is the string that's being duplicated";
+// 	printf("return ft_strdup: \t|%s|\n", ft_strdup(s));
+// 	printf("return strdup: \t\t|%s|\n", strdup(s));
+// }

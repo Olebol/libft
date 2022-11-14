@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 19:44:08 by opelser       #+#    #+#                 */
-/*   Updated: 2022/11/08 22:22:29 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/14 17:55:56 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,25 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t		d_len;
-	size_t		s_len;
+	size_t		dst_len;
+	size_t		src_len;
 	size_t		i;
 
-	d_len = ft_strlen(dst);
-	s_len = ft_strlen(src);
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
 	i = 0;
-	if (dstsize <= d_len)
-		return (s_len + dstsize);
-	while (i < dstsize - d_len - 1 && src[i])
+	if (dstsize <= dst_len)
+		return (src_len + dstsize);
+	while (i < dstsize - dst_len - 1 && src[i])
 	{
-		dst[d_len + i] = src[i];
+		dst[dst_len + i] = src[i];
 		i++;
 	}
-	dst[d_len + i] = '\0';
-	return (s_len + d_len);
+	dst[dst_len + i] = '\0';
+	return (src_len + dst_len);
 }
 
-// if (dst == NULL || src == NULL)
-// 	return (dstsize);
-// #include <string.h>
-// #include <stdio.h>
+// #include "libft.h"
 // int	main(void)
 // {
 // 	char	str[30] = "hello ";

@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 18:53:44 by opelser       #+#    #+#                 */
-/*   Updated: 2022/10/18 22:35:32 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/14 17:51:39 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (i);
 }
 
-// #include <string.h>
-// #include <stdio.h>
+// #include "libft.h"
 // int	main(void)
 // {
 // 	char	str[] = "123456789";

@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/05 21:00:35 by opelser       #+#    #+#                 */
-/*   Updated: 2022/10/19 15:14:26 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/14 18:21:23 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 	org = dst;
 	i = 0;
-	if (dst == NULL && src == NULL)
+	if (!dst && !src)
 		return (NULL);
 	while (n > i)
 	{

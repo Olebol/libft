@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/03 20:03:28 by opelser       #+#    #+#                 */
-/*   Updated: 2022/11/03 23:07:35 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/14 18:01:26 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,12 @@ void	ft_putnbr_fd(int n, int fd)
 		write(fd, "-", 1);
 	}
 	if (n >= 10)
-	{
 		ft_putnbr_fd((n / 10), fd);
-		ft_putnbr_fd((n % 10), fd);
-	}
-	if (n < 10)
-		ft_putchar_fd((n + '0'), fd);
+	ft_putchar_fd(((n % 10) + '0'), fd);
 }
 
 // int main(void)
 // {
-// 	ft_putnbr_fd(0, 1);
+// 	ft_putnbr_fd(45, 1);
 // 	return (0);
 // }

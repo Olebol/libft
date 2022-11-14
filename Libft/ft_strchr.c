@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/19 19:33:52 by opelser       #+#    #+#                 */
-/*   Updated: 2022/11/08 22:53:53 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/14 18:13:18 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,11 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)s);
 	return (NULL);
 }
+
+// #include "libft.h"
+// int	main(void)
+// {
+// 	const char	s[] = "this is the string that's being looked through";
+// 	printf("return ft_strchr: \t|%s|\n", ft_strchr(s, 'r'));
+// 	printf("return strchr: \t\t|%s|\n", strchr(s, 'r'));
+// }

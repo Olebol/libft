@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/19 20:21:03 by opelser       #+#    #+#                 */
-/*   Updated: 2022/11/08 22:29:38 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/14 17:48:12 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,12 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
+
+// int	main(void)
+// {
+// 	const char		s1[] = "this is a test sentence ";
+// 	const char		s2[] = "this is a test sentence\200 too";
+
+// 	printf("ret ft_strncmp: \t%d\n", ft_strncmp(s1, s2, 25));
+// 	printf("ret strncmp: \t\t%d\n", strncmp(s1, s2, 25));
+// }

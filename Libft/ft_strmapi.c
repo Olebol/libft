@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/01 22:13:18 by opelser       #+#    #+#                 */
-/*   Updated: 2022/11/03 15:18:10 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/14 17:49:25 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	const int		len = ft_strlen(s);
 
 	i = 0;
-	s2 = malloc(len + 1);
-	if (!s)
+	if (!s || !f)
 		return (NULL);
-	if (!s2)
+	s2 = malloc(len + 1);
+	if (!s || !s2)
 		return (NULL);
 	while (i < (unsigned int)len)
 	{
