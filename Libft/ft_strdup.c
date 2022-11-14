@@ -20,12 +20,13 @@
 
 char	*ft_strdup(const char *s1)
 {
-	char	*ptr;
+	char			*ptr;
+	const size_t	s1_len = ft_strlen(s1);
 
-	ptr = malloc((ft_strlen(s1) + 1) * sizeof(char));
+	ptr = malloc((s1_len + 1) * sizeof(char));
 	if (!ptr)
 		return (NULL);
-	ft_strlcpy(ptr, s1, ft_strlen(s1) + 1);
+	ft_strlcpy(ptr, s1, s1_len + 1);
 	return (ptr);
 }
 

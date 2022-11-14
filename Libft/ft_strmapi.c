@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/01 22:13:18 by opelser       #+#    #+#                 */
-/*   Updated: 2022/11/14 17:49:25 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/14 21:47:31 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char			*s2;
 	unsigned int	i;
-	const int		len = ft_strlen(s);
+	const size_t	len = ft_strlen(s);
 
 	i = 0;
 	if (!s || !f)

@@ -6,11 +6,11 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 00:01:10 by opelser       #+#    #+#                 */
-/*   Updated: 2022/11/08 22:21:21 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/14 20:12:08 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
 static int	ft_intlen(int n)
 {
@@ -60,6 +60,7 @@ char	*ft_itoa(int n)
 	return (res);
 }
 
+// #include "libft.h"
 // int	main()
 // {
 // 	printf("\n\nfinal result: %s\n", ft_itoa(INT32_MIN));

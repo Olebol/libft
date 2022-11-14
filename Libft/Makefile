@@ -61,8 +61,6 @@ clean:
 fclean: clean
 	@rm -f ${NAME}
 
-re:
-	@${MAKE} fclean
-	@${MAKE} ${NAME}
+re: fclean ${NAME}
 
 .PHONY: all clean fclean re
