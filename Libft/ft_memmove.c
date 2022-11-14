@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 14:56:29 by opelser       #+#    #+#                 */
-/*   Updated: 2022/11/14 18:21:07 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/14 23:07:24 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	void			*org;
 	unsigned char	*uc_dst;
 	unsigned char	*uc_src;
 
 	uc_dst = (unsigned char *)dst;
 	uc_src = (unsigned char *)src;
-	org = dst;
 	if (dst < src)
 		while (len--)
 			*uc_dst++ = *uc_src++;
@@ -31,7 +29,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		while (len--)
 			*uc_dst-- = *uc_src--;
 	}
-	return (org);
+	return (dst);
 }
 
 // #include <string.h>
