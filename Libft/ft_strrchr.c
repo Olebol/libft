@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/19 19:50:38 by opelser       #+#    #+#                 */
-/*   Updated: 2022/11/14 22:28:57 by opelser       ########   odam.nl         */
+/*   Updated: 2022/11/16 17:57:31 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int		i;
+	ssize_t		i;
 
 	i = ft_strlen(s);
 	while (i >= 0)
