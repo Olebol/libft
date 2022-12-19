@@ -1,10 +1,1 @@
-
-
-
-
-# notes:
-#	High-level package managers download packages, figure out the dependencies 
-#		for you, and deal with groups of packages. 
-
-#	Low-level managers unpack individual packages, run scripts, and get the sof-
-#		tware installed correctly.
+26497f7f0ddf0697eb35690a8186d030f08ac34f
