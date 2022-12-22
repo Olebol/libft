@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 19:21:20 by opelser       #+#    #+#                 */
-/*   Updated: 2022/12/22 18:50:51 by opelser       ########   odam.nl         */
+/*   Updated: 2022/12/22 19:11:46 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,29 @@ char	*get_next_line(int fd)
 	static char		*rest;
 	size_t			bytes;
 
-	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	printf("\n[FUNCTION CALL]\n\n%s < rest\n\n", rest);
 
-	if (buf == NULL)
-		return (NULL);
+	if (!rest)
+	{
+		buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
+		if (buf == NULL)
+			return (NULL);
 
-	if (!(bytes = read(fd, buf, BUFFER_SIZE)))
-		return (NULL);
-	buf[bytes] = '\0';
+		if (!(bytes = read(fd, buf, BUFFER_SIZE)))
+			return (NULL);
+		buf[bytes] = '\0';
+	}
+	else
+		buf = rest;
+	
+	printf("checkpoint\n\n");
+
 	str = malloc(1);
 	str = ft_strjoin(str, buf);
+
 	if (find_newline(str))
 		rest = divide_lines(str, rest);
+
 	printf("%s < rest\n\n", rest);
 	return(str);
 }
@@ -86,13 +97,14 @@ int main(int argc, char **argv)
 	while (count < argv[2][0] - 48)
 	{
 		str = get_next_line(file);
+		printf("line %d:\t %s", count + 1, str);
 		if (str == NULL)
 		{
 			write(1, "get_next_line failed to execute\n", 33);
 			return (0);
 		}
 
-		printf("line %d:\t %s", count + 1, str);
+		
 		count++;
 	}
 
