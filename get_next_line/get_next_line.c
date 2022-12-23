@@ -6,20 +6,27 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 19:21:20 by opelser       #+#    #+#                 */
-/*   Updated: 2022/12/22 19:11:46 by opelser       ########   odam.nl         */
+/*   Updated: 2022/12/23 13:20:11 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-size_t	find_newline(char *str)
+ssize_t	find_newline(char *str)
 {
-	size_t i;
+	ssize_t i;
 
 	i = 0;
-	while (str[i] != '\n')
+	if (!str)
+		return (-1);
+
+	while (str[i] != '\n' && str[i] != '\0')
 		i++;
+
+	if (str[i] == '\0')
+		return (-1);
+
 	return (i);
 }
 
@@ -48,22 +55,30 @@ char	*get_next_line(int fd)
 	static char		*rest;
 	size_t			bytes;
 
-	printf("\n[FUNCTION CALL]\n\n%s < rest\n\n", rest);
+	// printf("\n[FUNCTION CALL]\n%s < rest\n\n", rest);
+	// printf("\n[CHECKPOINT 1]\n%s < rest\n\n", rest);
+	// printf("> %s < rest\n[END OF FUNCTION]\n\n", rest);
 
-	if (!rest)
+	if (find_newline(rest) == -1)
 	{
 		buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
 		if (buf == NULL)
 			return (NULL);
 
-		if (!(bytes = read(fd, buf, BUFFER_SIZE)))
+		if (!(bytes = read(fd, buf, BUFFER_SIZE)) && (!rest))
 			return (NULL);
+
+		else if (rest)
+		{
+			ft_strlcpy(str, rest, ft_strlen(rest) + 1);
+			free(rest);
+			rest = NULL;
+			return (str);
+		}
 		buf[bytes] = '\0';
 	}
 	else
 		buf = rest;
-	
-	printf("checkpoint\n\n");
 
 	str = malloc(1);
 	str = ft_strjoin(str, buf);
@@ -71,7 +86,8 @@ char	*get_next_line(int fd)
 	if (find_newline(str))
 		rest = divide_lines(str, rest);
 
-	printf("%s < rest\n\n", rest);
+	free(buf);
+
 	return(str);
 }
 
@@ -97,10 +113,11 @@ int main(int argc, char **argv)
 	while (count < argv[2][0] - 48)
 	{
 		str = get_next_line(file);
-		printf("line %d:\t %s", count + 1, str);
-		if (str == NULL)
+		if (str != NULL)
+			printf("line %d:\t %s", count + 1, str);
+		else
 		{
-			write(1, "get_next_line failed to execute\n", 33);
+			printf("\nget_next_line failed to execute\n");
 			return (0);
 		}
 
