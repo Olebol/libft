@@ -6,11 +6,12 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/20 18:33:07 by opelser       #+#    #+#                 */
-/*   Updated: 2022/12/22 17:14:32 by opelser       ########   odam.nl         */
+/*   Updated: 2022/12/27 19:08:58 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 size_t	ft_strlen(const char *str)
 {
@@ -22,66 +23,64 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char	*ft_strdup(const char *s1)
 {
-	size_t	i;
+	char	*result_string;
+	size_t	len;
+	int		i;
+	
+	if (!s1)
+		return(NULL);
+	len = ft_strlen(s1);
+
+	result_string = malloc((len + 1) * sizeof(char));
+	if (!result_string)
+		return (NULL);
 
 	i = 0;
-	while (src[i] && dstsize != 0 && i < dstsize - 1)
+	while (i < len)
 	{
-		dst[i] = src[i];
+		result_string[i] = s1[i];
 		i++;
 	}
-	if (dstsize)
-		dst[i] = 0;
-	while (src[i])
-		i++;
-	return (i);
+	result_string[i] = '\0';
+	return (result_string);
 }
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+char	*ft_strjoin_free(char *s1, char const *s2)
 {
-	const size_t	dst_len = ft_strlen(dst);
-	const size_t	src_len = ft_strlen(src);
-	size_t			i;
+	char	*str;
+	int		s1_len;
+	int		s2_len;
+	int		i;
+
+	if (!s2)
+		return (NULL);
+	if (!s1)
+		s1 = ft_strdup("");
+
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	str = malloc((s1_len + s2_len + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
 
 	i = 0;
-	if (dstsize <= dst_len)
-		return (src_len + dstsize);
-	while (i < dstsize - dst_len - 1 && src[i])
+	while (i < s1_len)
 	{
-		dst[dst_len + i] = src[i];
+		str[i] = s1[i];
 		i++;
 	}
-	dst[dst_len + i] = '\0';
-	return (src_len + dst_len);
-}
 
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char			*ptr;
-	const size_t	s1_len = ft_strlen(s1);
-	const size_t	s2_len = ft_strlen(s2);
-
-	if (!s1 || !s2)
-		return (NULL);
-	ptr = malloc((s1_len + s2_len + 1) * sizeof(char));
-	if (!ptr)
-		return (NULL);
-	ft_strlcpy(ptr, s1, s1_len + 1);
-	ft_strlcat(ptr, s2, ((s1_len + s2_len + 1)));
-	return (ptr);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	while (*s)
+	i = 0;
+	while (i < s2_len)
 	{
-		if (*s == (char) c)
-			return ((char *)s);
-		s++;
+		str[i + s1_len] = s2[i];
+		i++;
 	}
-	if (*s == (char) c)
-		return ((char *)s);
-	return (NULL);
+	str [i + s1_len] = '\0';
+
+	free (s1);
+	// printf("< %s >\t", s1);
+	return (str);
 }

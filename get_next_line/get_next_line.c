@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 19:21:20 by opelser       #+#    #+#                 */
-/*   Updated: 2022/12/23 13:20:11 by anonymous     ########   odam.nl         */
+/*   Updated: 2022/12/27 19:46:54 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,39 @@ char	*get_next_line(int fd)
 	char			*str;
 	static char		*rest;
 
-	str = malloc(1);
+	if (!fd)
+		return (NULL);
+
+	str = NULL;
 	if (find_newline(rest) == -1)
 	{
 		if (rest != NULL)
 		{
-			str = ft_strjoin(str, rest);
-			rest = divide_lines(str, rest);
+			str = ft_strdup(rest);
+			free(rest);
+			rest = NULL;
 		}
 
 		if ((str = make_str(fd, str)) == NULL)
+		{
+			free(str);
 			return (NULL);
-		rest = divide_lines(str, rest);
+		}
 	}
-	else
-	if (rest)
+	else if (rest)
 	{
-		str = ft_strjoin(str, rest);
-		free (rest);
+		str = ft_strdup(rest);
+		free(rest);
+		rest = NULL;
 		str = make_str(fd, str);
-		rest = divide_lines(str, rest);
 	}
 	if (str[0] == '\0')
+	{
+		free(str);
 		return (NULL);
+	}
+	rest = divide_lines(str, rest);
+	// printf("< %s >", rest);
 
 	return(str);
 }
@@ -63,12 +73,11 @@ ssize_t	find_newline(char *str)
 char	*divide_lines(char *str, char *rest)
 {
 	int		i;
-	int		len;
 
 	i = find_newline(str) + 1;
-	len = ft_strlen(str) - i + 1;
-	rest = malloc(len * sizeof(char));
-	ft_strlcpy(rest, str + i, len);
+	if (str[i - 1] == '\0')
+		return (NULL);
+	rest = ft_strdup(str + i);
 	while (str[i] != '\0')
 	{
 		str[i] = '\0';
@@ -89,21 +98,26 @@ char	*make_str(int fd, char *str)
 		return (NULL);
 
 	bytes = read(fd, buf, BUFFER_SIZE);
+	if (bytes == -1)
+	{
+		free(buf);
+		return (NULL);
+	}
 	buf[bytes] = '\0';
 
 	while ((truefalse = find_newline(buf)) == BUFFER_SIZE)
 	{
-		str = ft_strjoin(str, buf);
+		str = ft_strjoin_free(str, buf);
 		bytes = read(fd, buf, BUFFER_SIZE);
 		if (bytes == -1)
-			return (NULL);
+		{
+			free(buf);
+			return (str);
+		}
 		buf[bytes] = '\0';
 	}
-	str = ft_strjoin(str, buf);
+	str = ft_strjoin_free(str, buf);
 	free(buf);
-
-	if (truefalse == -1)
-		return (str);
 
 	return (str);
 }
@@ -112,8 +126,6 @@ int main(int argc, char **argv)
 {
 	int		file;
 	char	*str;
-
-	
 
 	if (argc != 3)
 	{
@@ -142,13 +154,15 @@ int main(int argc, char **argv)
 		else
 		{
 			printf("\nget_next_line failed to execute\n");
-			return (0);
+			free(str);
+			break;
 		}
-
-		
+		free(str);
 		count++;
 	}
-
+	while((str = get_next_line(file)) != NULL)
+		free(str);
+	
 	close(file);
 	return 0;
 }

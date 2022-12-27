@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/20 18:31:06 by opelser       #+#    #+#                 */
-/*   Updated: 2022/12/23 13:29:35 by anonymous     ########   odam.nl         */
+/*   Updated: 2022/12/27 19:08:31 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
-#define BUFFER_SIZE 1032
+#define BUFFER_SIZE 190000
 
 char	*get_next_line(int fd);
-size_t	ft_strlen(const char *str);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strchr(const char *s, int c);
 ssize_t	find_newline(char *str);
 char	*divide_lines(char *str, char *rest);
-char	*make_str(int fd, char *str);
+char	*make_str(int fd, char *str);\
+
+size_t	ft_strlen(const char *str);
+char	*ft_strdup(const char *s1);
+char	*ft_strjoin_free(char *s1, char const *s2);
