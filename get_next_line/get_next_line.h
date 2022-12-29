@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/20 18:31:06 by opelser       #+#    #+#                 */
-/*   Updated: 2022/12/29 02:12:53 by opelser       ########   odam.nl         */
+/*   Updated: 2022/12/29 17:39:08 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 char	*get_next_line(int fd);
 ssize_t	find_newline(char *str);
-char	*divide_lines(char *str, char *rest);
+char	*divide_lines(char *str);
 char	*ft_read(int fd, char *buf);
 char	*make_str(int fd, char *str);
 

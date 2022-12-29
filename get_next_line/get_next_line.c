@@ -6,13 +6,14 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 19:21:20 by opelser       #+#    #+#                 */
-/*   Updated: 2022/12/29 02:13:23 by opelser       ########   odam.nl         */
+/*   Updated: 2022/12/29 17:39:40 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
+// ft_free function returning null?
 char	*get_next_line(int fd)
 {
 	char			*str;
@@ -27,7 +28,6 @@ char	*get_next_line(int fd)
 		{
 			str = ft_strdup(rest);
 			free(rest);
-			rest = NULL;
 		}
 		str = make_str(fd, str);
 	}
@@ -35,12 +35,11 @@ char	*get_next_line(int fd)
 	{
 		str = ft_strdup(rest);
 		free(rest);
-		rest = NULL;
 		str = make_str(fd, str);
 	}
 	if (!str)
 		return (NULL);
-	rest = divide_lines(str, rest);
+	rest = divide_lines(str);
 	return (str);
 }
 
@@ -56,9 +55,10 @@ ssize_t	find_newline(char *str)
 	return (i);
 }
 
-char	*divide_lines(char *str, char *rest)
+char	*divide_lines(char *str)
 {
 	int		i;
+	char	*rest;
 
 	i = find_newline(str) + 1;
 	if (str[i - 1] == '\0')
