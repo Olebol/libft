@@ -6,17 +6,19 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/20 18:31:06 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/03 16:44:10 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/03 20:26:43 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 # include <stddef.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
-// # define BUFFER_SIZE 10
 
 char	*get_next_line(int fd);
 ssize_t	find_newline(char *str);

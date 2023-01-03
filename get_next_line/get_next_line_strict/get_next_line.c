@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 19:21:20 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/03 20:13:06 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/03 21:57:16 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,10 @@ char	*get_next_line(int fd)
 	if (rest)
 	{
 		str = ft_strdup(rest);
-		if (!str)
-		{
-			free(rest);
-			rest = NULL;
-			return (NULL);
-		}
 		free(rest);
 		rest = NULL;
+		if (!str)
+			return (NULL);
 	}
 	str = make_str(fd, str);
 	if (!str)
@@ -74,11 +70,7 @@ char	*divide_lines(char *str)
 	if (str[i - 1] == '\0')
 		return (NULL);
 	rest = ft_strdup(str + i);
-	while (str[i] != '\0')
-	{
-		str[i] = '\0';
-		i++;
-	}
+	str[i] = '\0';
 	return (rest);
 }
 
@@ -102,34 +94,22 @@ char	*make_str(int fd, char *str)
 
 	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buf)
-	{
-		free(str);
-		return (NULL);
-	}
+		return (free(str), NULL);
 	buf = ft_read(fd, buf);
 	if (!buf)
-	{
-		free(str);
-		return (NULL);
-	}
+		return (free(str), NULL);
 	while (find_newline(buf) == BUFFER_SIZE)
 	{
 		str = ft_strjoin_free(str, buf);
 		if (!str)
-		{
-			free(buf);
-			return (NULL);
-		}
+			return (free(buf), NULL);
 		buf = ft_read(fd, buf);
 		if (!buf)
 			return (str);
 	}
 	str = ft_strjoin_free(str, buf);
 	if (!str)
-	{
-		free(buf);
-		return (NULL);
-	}
+		return (free(buf), NULL);
 	free(buf);
 	if (str[0] == '\0')
 		return (free(str), NULL);
@@ -161,7 +141,8 @@ char	*make_str(int fd, char *str)
 // 			printf("line %d:\t %s", count + 1, str);
 // 		else
 // 		{
-// 			printf("\nget_next_line failed to execute or cannot read anymore lines\n");
+// 			printf("\nget_next_line failed to execute or cannot read anymore 
+// lines\n");
 // 			break;
 // 		}
 // 		if (str)
