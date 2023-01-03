@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 19:21:20 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/03 16:44:17 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/03 17:52:04 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ char	*get_next_line(int fd)
 	{
 		str = ft_strdup(rest);
 		free(rest);
+		rest = NULL;
 	}
 	str = make_str(fd, str);
 	if (!str)
@@ -85,7 +86,10 @@ char	*make_str(int fd, char *str)
 		return (NULL);
 	buf = ft_read(fd, buf);
 	if (!buf)
+	{
+		free(str);
 		return (NULL);
+	}
 	while (find_newline(buf) == BUFFER_SIZE)
 	{
 		str = ft_strjoin_free(str, buf);
@@ -96,10 +100,7 @@ char	*make_str(int fd, char *str)
 	str = ft_strjoin_free(str, buf);
 	free(buf);
 	if (str[0] == '\0')
-	{
-		free(str);
-		str = NULL;
-	}
+		return (free(str), NULL);
 	return (str);
 }
 
@@ -137,15 +138,4 @@ char	*make_str(int fd, char *str)
 // 	}
 // 	close(file);
 // 	return 0;
-// }
-
-// int main(int argc, char **argv)
-// {
-// 	char	*str;
-
-// 	str = malloc(10000);
-// 	str = get_next_line(0);
-// 	printf("\n|%s|", str);
-// 	free(str);
-// 	return (0);
 // }
