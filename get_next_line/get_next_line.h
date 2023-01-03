@@ -6,15 +6,17 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/20 18:31:06 by opelser       #+#    #+#                 */
-/*   Updated: 2022/12/29 17:39:08 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/03 16:44:10 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#define BUFFER_SIZE 100
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# include <stddef.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdlib.h>
+// # define BUFFER_SIZE 10
 
 char	*get_next_line(int fd);
 ssize_t	find_newline(char *str);
@@ -26,3 +28,5 @@ size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *s1);
 void	ft_copy(char *dst, char const *src, size_t offset, size_t len);
 char	*ft_strjoin_free(char *s1, char const *s2);
+
+#endif

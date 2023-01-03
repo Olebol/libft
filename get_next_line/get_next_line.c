@@ -6,37 +6,27 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 19:21:20 by opelser       #+#    #+#                 */
-/*   Updated: 2022/12/29 17:39:40 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/03 16:44:17 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-// ft_free function returning null?
 char	*get_next_line(int fd)
 {
 	char			*str;
 	static char		*rest;
 
-	if (!fd)
+	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	str = NULL;
-	if (find_newline(rest) == -1)
-	{
-		if (rest)
-		{
-			str = ft_strdup(rest);
-			free(rest);
-		}
-		str = make_str(fd, str);
-	}
-	else
+	if (rest)
 	{
 		str = ft_strdup(rest);
 		free(rest);
-		str = make_str(fd, str);
 	}
+	str = make_str(fd, str);
 	if (!str)
 		return (NULL);
 	rest = divide_lines(str);
@@ -147,4 +137,15 @@ char	*make_str(int fd, char *str)
 // 	}
 // 	close(file);
 // 	return 0;
+// }
+
+// int main(int argc, char **argv)
+// {
+// 	char	*str;
+
+// 	str = malloc(10000);
+// 	str = get_next_line(0);
+// 	printf("\n|%s|", str);
+// 	free(str);
+// 	return (0);
 // }
