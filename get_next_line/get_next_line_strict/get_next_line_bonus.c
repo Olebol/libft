@@ -16,25 +16,25 @@
 char	*get_next_line(int fd)
 {
 	char			*str;
-	static char		*rest;
+	static char		*rest[1024];
 	char			*new;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	str = str_undivided(fd, rest);
+	str = str_undivided(fd, rest[fd]);
 	if (!str)
 	{
-		free(rest);
-		rest = NULL;
+		free(rest[fd]);
+		rest[fd] = NULL;
 		return (NULL);
 	}
-	rest = divide_lines(str);
+	rest[fd] = divide_lines(str);
 	new = ft_strdup(str);
 	free(str);
 	if (!new)
 	{
-		free(rest);
-		rest = NULL;
+		free(rest[fd]);
+		rest[fd] = NULL;
 		return (NULL);
 	}
 	return (new);
