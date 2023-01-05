@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   get_next_line_utils.c                              :+:    :+:            */
+/*   get_next_line_utils_bonus.c                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/20 18:33:07 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/03 21:53:39 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/05 18:13:06 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 size_t	ft_strlen(const char *str)
 {
@@ -51,10 +50,7 @@ char	*ft_read(int fd, char *buf)
 
 	bytes = read(fd, buf, BUFFER_SIZE);
 	if (bytes == -1)
-	{
-		free(buf);
 		return (NULL);
-	}
 	buf[bytes] = '\0';
 	return (buf);
 }

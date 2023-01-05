@@ -6,35 +6,34 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 19:21:20 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/03 21:57:16 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/05 17:57:37 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 char	*get_next_line(int fd)
 {
 	char			*str;
-	static char		*rest;
+	static char		*rest[OPEN_MAX];
 	char			*new;
 
-	if (fd < 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE < 1)
 		return (NULL);
-	str = str_undivided(fd, rest);
+	str = str_undivided(fd, rest[fd]);
 	if (!str)
 	{
-		free(rest);
-		rest = NULL;
+		free(rest[fd]);
+		rest[fd] = NULL;
 		return (NULL);
 	}
-	rest = divide_lines(str);
+	rest[fd] = divide_lines(str);
 	new = ft_strdup(str);
 	free(str);
 	if (!new)
 	{
-		free(rest);
-		rest = NULL;
+		free(rest[fd]);
+		rest[fd] = NULL;
 		return (NULL);
 	}
 	return (new);
@@ -85,32 +84,27 @@ char	*divide_lines(char *str)
 
 char	*make_str(int fd, char *str)
 {
-	char	*buf;
+	char	buf[BUFFER_SIZE + 1];
 
-	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buf)
-		return (free(str), NULL);
-	buf = ft_read(fd, buf);
-	if (!buf)
+	if (!ft_read(fd, buf))
 		return (free(str), NULL);
 	while (find_newline(buf) == BUFFER_SIZE)
 	{
 		str = ft_strjoin_free(str, buf);
 		if (!str)
-			return (free(buf), NULL);
-		buf = ft_read(fd, buf);
-		if (!buf)
+			return (NULL);
+		if (!ft_read(fd, buf))
 			return (str);
 	}
 	str = ft_strjoin_free(str, buf);
 	if (!str)
-		return (free(buf), NULL);
-	free(buf);
+		return (NULL);
 	if (str[0] == '\0')
 		return (free(str), NULL);
 	return (str);
 }
 
+// #include <stdio.h>
 // int main(int argc, char **argv)
 // {
 // 	int		file;
@@ -137,7 +131,7 @@ char	*make_str(int fd, char *str)
 // 		else
 // 		{
 // 			printf("\nget_next_line failed to execute or cannot read anymore 
-// lines\n");
+// // lines\n");
 // 			break;
 // 		}
 // 		if (str)
