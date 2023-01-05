@@ -20,14 +20,22 @@
 
 char	*ft_strdup(const char *s1)
 {
-	char			*ptr;
-	const size_t	s1_len = ft_strlen(s1);
+	char	*result_string;
+	size_t	len;
+	size_t	i;
 
-	ptr = malloc((s1_len + 1) * sizeof(char));
-	if (!ptr)
+	len = ft_strlen(s1);
+	result_string = malloc((len + 1) * sizeof(char));
+	if (!result_string)
 		return (NULL);
-	ft_strlcpy(ptr, s1, s1_len + 1);
-	return (ptr);
+	i = 0;
+	while (i < len)
+	{
+		result_string[i] = s1[i];
+		i++;
+	}
+	result_string[i] = '\0';
+	return (result_string);
 }
 
 // #include "libft.h"
