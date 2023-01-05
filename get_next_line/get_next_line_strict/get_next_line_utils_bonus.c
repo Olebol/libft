@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/20 18:33:07 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/05 18:13:06 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/05 18:26:35 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlen(const char *str)
 	size_t		i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i])
 		i++;
 	return (i);
@@ -75,12 +77,6 @@ char	*ft_strjoin_free(char *s1, char const *s2)
 
 	if (!s2)
 		return (NULL);
-	if (!s1)
-	{
-		s1 = ft_strdup("");
-		if (!s1)
-			return (NULL);
-	}
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
 	str = malloc((s1_len + s2_len + 1) * sizeof(char));
