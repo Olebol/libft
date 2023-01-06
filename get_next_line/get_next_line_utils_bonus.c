@@ -6,11 +6,11 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/20 18:33:07 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/05 18:26:35 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/06 18:24:01 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *str)
 {

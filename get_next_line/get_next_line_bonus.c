@@ -6,11 +6,11 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 19:21:20 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/05 18:08:10 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/06 18:23:55 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {

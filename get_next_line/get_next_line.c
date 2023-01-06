@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 19:21:20 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/05 17:57:37 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/06 18:24:37 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,25 @@
 char	*get_next_line(int fd)
 {
 	char			*str;
-	static char		*rest[OPEN_MAX];
+	static char		*rest;
 	char			*new;
 
 	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE < 1)
 		return (NULL);
-	str = str_undivided(fd, rest[fd]);
+	str = str_undivided(fd, rest);
 	if (!str)
 	{
-		free(rest[fd]);
-		rest[fd] = NULL;
+		free(rest);
+		rest = NULL;
 		return (NULL);
 	}
-	rest[fd] = divide_lines(str);
+	rest = divide_lines(str);
 	new = ft_strdup(str);
 	free(str);
 	if (!new)
 	{
-		free(rest[fd]);
-		rest[fd] = NULL;
+		free(rest);
+		rest = NULL;
 		return (NULL);
 	}
 	return (new);
