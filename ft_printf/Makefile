@@ -6,7 +6,9 @@ CFLAGS := -Wall -Werror -Wextra
 
 BUILDDIR := obj
 
-SRC :=	ft_printf.c	\
+SRC :=	ft_printf.c				\
+		printf_conversions.c	\
+		
 
 
 OBJ := ${addprefix ${BUILDDIR}/, ${SRC:.c=.o}}
