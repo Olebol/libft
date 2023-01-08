@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 22:04:06 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/08 22:13:54 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/09 00:03:46 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,64 @@
 #include <stdio.h>
 #include <stdarg.h>
 
+typedef int (* function)(void *specifier);
+
+int	ft_putchar(void *arg)
+{
+	const char	c = *((char *)arg);
+
+	write(1, &c, 1);
+	return (1);
+}
+
+int	ft_putstr(void *str)
+{
+	const char	*casted = ((char *) str);
+	int			i;
+
+	i = 0;
+	while (casted[i])
+	{
+		write(1, &casted[i], 1);
+		i++;
+	}
+	return (i);
+}
+
 int		ft_printf(const char *format, ...)
 {
-	va_list			ptr;
-	int				i;
+	va_list				ptr;
+	int					i;
+	static function		jump_table[126] = {
+		['c'] = ft_putchar,
+		['s'] = ft_putstr,
+		0
+	} ;
 
+	va_start(ptr, format);
+	
 	i = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')
 		{
-			write(1, "[ % ]", 6);
+			jump_table[(int)format[i + 1]](va_arg(ptr, void *));
 			i += 2;
 			continue ;
 		}
 		write(1, &format[i], 1);
 		i++;
 	}
-	va_start(ptr, format);
-
 	va_end(ptr);
 	return (0);
 }
 
 int		main(void)
 {
-	ft_printf("abc%sde\\f");
+	char	c = 'X';
+	// char	*str = "XXXX";
+
+	ft_printf("ab%ccd\\f", c);
 	return (0);
 }
 

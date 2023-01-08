@@ -7,7 +7,7 @@ CFLAGS := -Wall -Werror -Wextra
 BUILDDIR := obj
 
 SRC :=	ft_printf.c				\
-		printf_conversions.c	\
+#		printf_conversions.c	\
 		
 
 
@@ -17,12 +17,13 @@ all: ${NAME}
 
 ${NAME}: ${OBJ}
 	@ar rc ${NAME} $^
+	@gcc $@ -o program
 
 ${BUILDDIR}:
 	@mkdir ${BUILDDIR}
 
 ${BUILDDIR}/%.o: %.c | ${BUILDDIR}
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -g -c $< -o $@
 
 clean:
 	@rm -rf ${BUILDDIR}
@@ -30,6 +31,7 @@ clean:
 
 fclean: clean
 	@rm -f ${NAME}
+	@rm -f program
 
 re: fclean ${NAME}
 
