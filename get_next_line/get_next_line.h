@@ -6,15 +6,22 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/20 18:31:06 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/06 18:48:48 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/08 17:06:16 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
+
+# if BUFFER_SIZE > 6000000
+#  undef BUFFER_SIZE
+#  define BUFFER_SIZE 420
+# endif
+
 # include <stddef.h>
 # include <unistd.h>
 # include <stdlib.h>
