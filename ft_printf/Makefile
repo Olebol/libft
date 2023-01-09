@@ -18,7 +18,7 @@ all: ${NAME}
 
 ${NAME}: ${OBJ}
 	@ar rc ${NAME} $^
-	@gcc $@ -o program
+#	@gcc $@ -o program
 
 ${BUILDDIR}:
 	@mkdir ${BUILDDIR}

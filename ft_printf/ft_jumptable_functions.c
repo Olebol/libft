@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/09 19:09:55 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/09 21:27:15 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/09 21:31:41 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_printf_p(va_list va_ptr)
 	tmp = ptr;
 	write(1, "0x", 2);
 	count = ft_conversion(ptr, 16, "0123456789abcdef");
-	return (count + 1);
+	return (count + 2);
 }
 
 int	ft_printf_d(va_list va_ptr)
@@ -65,7 +65,7 @@ int	ft_printf_d(va_list va_ptr)
 
 int	ft_printf_di(va_list va_ptr)
 {
-	int		num;
+	long	num;
 	int		count;
 
 	num = va_arg(va_ptr, int);

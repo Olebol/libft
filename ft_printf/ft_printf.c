@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 22:04:06 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/09 21:26:14 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/09 21:28:33 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,22 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
-int		main(void)
-{
-	char	c = 'X';
-	// char	*s = "XXXX";
-	char	*p = "pointer test";
-	int		d = -78901;
-	unsigned int u = 198296479;
-	int		x = 123456789;
+// int		main(void)
+// {
+// 	char	c = 'X';
+// 	// char	*s = "XXXX";
+// 	char	*p = "pointer test";
+// 	int		d = -78901;
+// 	unsigned int u = 198296479;
+// 	int		x = 123456789;
 
-	int		ret;
+// 	int		ret;
 
-	ret = ft_printf("my printf:\n\nchar: %c\nstr: %s\nptr: %p\n", c, NULL, p);
-	ret += ft_printf("dec: %d\nuns: %u\nhex: %x\nhexup: %X\n\t%%", d, u, x, x);
-	printf("\n\nreturn: %d\n", ret);
-	ret = printf("\n\nprintf:\n\nchar: %c\nstr: %s\nptr: %p\n", c, NULL, p);
-	ret += printf("dec: %d\nuns: %u\nhex: %x\nhexup: %X\n\t%%", d, u, x, x);
-	printf("\n\nreturn: %d\n", ret);
-	return (0);
-}
+// 	ret = ft_printf("my printf:\n\nchar: %c\nstr: %s\nptr: %p\n", c, NULL, p);
+// 	ret += ft_printf("dec: %d\nuns: %u\nhex: %x\nhexup: %X\n\t%%", d, u, x, x);
+// 	printf("\n\nreturn: %d\n", ret);
+// 	ret = printf("\n\nprintf:\n\nchar: %c\nstr: %s\nptr: %p\n", c, NULL, p);
+// 	ret += printf("dec: %d\nuns: %u\nhex: %x\nhexup: %X\n\t%%", d, u, x, x);
+// 	printf("\n\nreturn: %d\n", ret);
+// 	return (0);
+// }
