@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 22:04:06 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/10 17:54:47 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/10 18:30:43 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,13 @@ int	jumptable(const char *format, int specifier, va_list va_ptr)
 	return (count);
 }
 
+int	percent_at_end(int count)
+{
+	if ((write(1, "%", 1)) == -1)
+		return (-1);
+	return (count + 1);
+}
+
 int	ft_printed_length(const char *format, va_list va_ptr)
 {
 	int		i;
@@ -70,15 +77,9 @@ int	ft_printed_length(const char *format, va_list va_ptr)
 		if (format[i] == '%')
 		{
 			if (format[i + 1] == '\0')
-			{
-				if ((write(1, "%", 1)) == -1)
-					return (-1);
-				i++;
-				count++;
-				return (count);
-			}
+				return (percent_at_end(count));
 			tmp = jumptable(format, (i + 1), va_ptr);
-			if (tmp < 0)
+			if (tmp == -1)
 				return (-1);
 			count += tmp;
 			i += 2;
@@ -116,12 +117,14 @@ int	ft_printf(const char *format, ...)
 
 // 	ret = ft_printf("my printf:\n\nchar: %c\nstr: %s\nptr: %p\n", c, s, p);
 // 	ret += ft_printf("dec: %d\nuns: %u\nhex: %x\nhexup: %X\n", d, u, x, x);
-// 	ret += ft_printf("percent edge cases: | %%%rabc | %%% | %");
+// 	ret += ft_printf("percent edge cases: | %%%rabc | %%% | %\0don't see this");
+
 // 	printf("\n\nreturn: %d\n\n| --------------------------- |", ret);
 
 // 	ret = printf("\n\nprintf:\n\nchar: %c\nstr: %s\nptr: %p\n", c, s, p);
 // 	ret += printf("dec: %d\nuns: %u\nhex: %x\nhexup: %X\n", d, u, x, x);
-// 	ret += printf("percent edge cases: | %%%rabc | %%% | %");
+// 	ret += printf("percent edge cases: | %%%rabc | %%% | %\0don't see this");
+
 // 	printf("\n\nreturn: %d\n", ret);
 // 	return (0);
 // }

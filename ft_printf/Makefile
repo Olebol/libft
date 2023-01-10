@@ -24,15 +24,14 @@ ${BUILDDIR}:
 	@mkdir ${BUILDDIR}
 
 ${BUILDDIR}/%.o: %.c | ${BUILDDIR}
-	@$(CC) -g -c $< -o $@
+	@$(CC) $(CFLAGS) -g -c $< -o $@
 
-# $(CFLAGS)
 norminette:
 	@norminette $(SRC) ft_printf.h
 
 clean:
 	@rm -rf ${BUILDDIR}
-# @rm -f a.out
+#	@rm -f a.out
 
 fclean: clean
 	@rm -f ${NAME}
