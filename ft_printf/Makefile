@@ -35,7 +35,7 @@ clean:
 
 fclean: clean
 	@rm -f ${NAME}
-	@rm -f program
+#	@rm -f program
 
 re: fclean ${NAME}
 

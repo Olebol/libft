@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 22:04:06 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/10 19:05:22 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/10 19:42:46 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	jumptable(const char *format, int specifier, va_list va_ptr)
 {
 	int					count;
 	static const char	format_specifiers[10] = "cspdiuxX%";
-	static t_function	function_array[126] = {
+	static t_function	function_array[127] = {
 	['c'] = ft_printf_c,
 	['s'] = ft_printf_s,
 	['p'] = ft_printf_p,
@@ -127,7 +127,7 @@ static char	*ft_strrchr(const char *s, int c)
 
 // 	ret = printf("\n\nprintf:\n\nchar: %c\nstr: %s\nptr: %p\n", c, s, p);
 // 	ret += printf("dec: %d\nuns: %u\nhex: %x\nhexup: %X\n", d, u, x, x);
-// 	ret += printf("percent edge cases: | %%%rabc | %%% | %\0don't see this");
+// 	// ret += printf("percent edge cases: | %%%rabc | %%% | %\0don't see this");
 
 // 	printf("\n\nreturn: %d\n", ret);
 // 	return (0);
