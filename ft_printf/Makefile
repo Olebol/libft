@@ -18,14 +18,15 @@ all: ${NAME}
 
 ${NAME}: ${OBJ}
 	@ar rc ${NAME} $^
-	# @gcc $@ -o program
+#	@gcc $@ -o program
 
 ${BUILDDIR}:
 	@mkdir ${BUILDDIR}
 
 ${BUILDDIR}/%.o: %.c | ${BUILDDIR}
-	@$(CC) $(CFLAGS) -g -c $< -o $@
+	@$(CC) -g -c $< -o $@
 
+# $(CFLAGS)
 norminette:
 	@norminette $(SRC) ft_printf.h
 
