@@ -6,7 +6,7 @@ CFLAGS := -Wall -Werror -Wextra
 
 BUILDDIR := obj
 
-SRC :=	ft_printf.c				 \
+SRC :=	ft_printf.c				\
 		ft_convert.c			\
 		ft_convert_nums.c		\
 		ft_base_conversion.c	\

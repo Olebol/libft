@@ -6,11 +6,11 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/09 19:09:55 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/10 18:46:29 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/10 18:58:56 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_conversions.h"
 
 typedef int	(*t_function)(va_list);
 

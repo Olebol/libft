@@ -6,65 +6,30 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 22:04:06 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/10 18:30:43 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/10 19:05:22 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-#include <stdio.h>
-#include <stdarg.h>
+int				ft_printf(const char *format, ...);
+static int		ft_parse(const char *format, va_list va_ptr);
+static int		jumptable(const char *format, int specifier, va_list va_ptr);
+static int		percent_at_end(int count);
+static char		*ft_strrchr(const char *s, int c);
 
-char	*ft_strrchr(const char *s, int c)
+int	ft_printf(const char *format, ...)
 {
-	int		i;
+	va_list		va_ptr;
+	int			count;
 
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (char) c)
-			return ((char *)(s + i));
-		i++;
-	}
-	return (NULL);
-}
-
-int	jumptable(const char *format, int specifier, va_list va_ptr)
-{
-	int					count;
-	static const char	format_specifiers[10] = "cspdiuxX%";
-	static t_function	function_array[126] = {
-	['c'] = ft_printf_c,
-	['s'] = ft_printf_s,
-	['p'] = ft_printf_p,
-	['d'] = ft_printf_di,
-	['i'] = ft_printf_di,
-	['u'] = ft_printf_u,
-	['x'] = ft_printf_hex,
-	['X'] = ft_printf_hexup,
-	['%'] = ft_printf_percent,
-	};
-
-	if (!ft_strrchr(format_specifiers, format[specifier]))
-	{
-		if (write(1, "%", 1) == -1)
-			return (-1);
-		if (write(1, &format[specifier], 1) == -1)
-			return (-1);
-		return (2);
-	}
-	count = function_array[(unsigned char) format[specifier]](va_ptr);
+	va_start(va_ptr, format);
+	count = ft_parse(format, va_ptr);
+	va_end(va_ptr);
 	return (count);
 }
 
-int	percent_at_end(int count)
-{
-	if ((write(1, "%", 1)) == -1)
-		return (-1);
-	return (count + 1);
-}
-
-int	ft_printed_length(const char *format, va_list va_ptr)
+static int	ft_parse(const char *format, va_list va_ptr)
 {
 	int		i;
 	int		count;
@@ -93,17 +58,56 @@ int	ft_printed_length(const char *format, va_list va_ptr)
 	return (count);
 }
 
-int	ft_printf(const char *format, ...)
+static int	jumptable(const char *format, int specifier, va_list va_ptr)
 {
-	va_list		va_ptr;
-	int			count;
+	int					count;
+	static const char	format_specifiers[10] = "cspdiuxX%";
+	static t_function	function_array[126] = {
+	['c'] = ft_printf_c,
+	['s'] = ft_printf_s,
+	['p'] = ft_printf_p,
+	['d'] = ft_printf_di,
+	['i'] = ft_printf_di,
+	['u'] = ft_printf_u,
+	['x'] = ft_printf_hex,
+	['X'] = ft_printf_hexup,
+	['%'] = ft_printf_percent,
+	};
 
-	va_start(va_ptr, format);
-	count = ft_printed_length(format, va_ptr);
-	va_end(va_ptr);
+	if (!ft_strrchr(format_specifiers, format[specifier]))
+	{
+		if (write(1, "%", 1) == -1)
+			return (-1);
+		if (write(1, &format[specifier], 1) == -1)
+			return (-1);
+		return (2);
+	}
+	count = function_array[(unsigned char) format[specifier]](va_ptr);
 	return (count);
 }
 
+static int	percent_at_end(int count)
+{
+	if ((write(1, "%", 1)) == -1)
+		return (-1);
+	return (count + 1);
+}
+
+static char	*ft_strrchr(const char *s, int c)
+{
+	int		i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char) c)
+			return ((char *)(s + i));
+		i++;
+	}
+	return (NULL);
+}
+
+// #include <stdio.h>
 // int		main(void)
 // {
 // 	char	c = 'X';
