@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 22:04:06 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/09 21:28:33 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/09 22:34:40 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,30 @@
 #include <stdio.h>
 #include <stdarg.h>
 
+int	jumptable(const char *format, int specifier, va_list va_ptr)
+{
+	int					count;
+	const t_function	function_array[126] = {
+	['c'] = ft_printf_c,
+	['s'] = ft_printf_s,
+	['p'] = ft_printf_p,
+	['d'] = ft_printf_di,
+	['i'] = ft_printf_di,
+	['u'] = ft_printf_u,
+	['x'] = ft_printf_hex,
+	['X'] = ft_printf_hexup,
+	['%'] = ft_printf_percent,
+	};
+
+	count = function_array[(unsigned char) format[specifier]](va_ptr);
+	return (count);
+}
+
 int	ft_printf(const char *format, ...)
 {
 	va_list				va_ptr;
 	int					i;
 	int					count;
-	const t_function	jump_table[126] = {
-		['c'] = ft_printf_c,
-		['s'] = ft_printf_s,
-		['p'] = ft_printf_p,
-		['d'] = ft_printf_di,
-		['i'] = ft_printf_di,
-		['u'] = ft_printf_u,
-		['x'] = ft_printf_hex,
-		['X'] = ft_printf_hexup,
-		['%'] = ft_printf_percent,
-	};
 
 	va_start(va_ptr, format);
 	count = 0;
@@ -39,7 +47,7 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			count += jump_table[(int)format[i + 1]](va_ptr);
+			count += jumptable(format, (i + 1), va_ptr);
 			i += 2;
 			continue ;
 		}

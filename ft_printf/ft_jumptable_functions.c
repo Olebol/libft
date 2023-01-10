@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/09 19:09:55 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/09 21:31:41 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/09 22:35:00 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	ft_printf_p(va_list va_ptr)
 	int				count;
 
 	ptr = va_arg(va_ptr, unsigned long);
+	if (ptr == 0)
+		return (write(1, "0x0", 3));
 	tmp = ptr;
 	write(1, "0x", 2);
 	count = ft_conversion(ptr, 16, "0123456789abcdef");
@@ -76,15 +78,5 @@ int	ft_printf_di(va_list va_ptr)
 		num *= -1;
 	}
 	count += ft_conversion(num, 10, "0123456789");
-	return (count);
-}
-
-int	ft_printf_u(va_list va_ptr)
-{
-	unsigned int	num;
-	int				count;
-
-	num = va_arg(va_ptr, int);
-	count = ft_conversion(num, 10, "0123456789");
 	return (count);
 }

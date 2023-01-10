@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 22:04:57 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/09 21:06:38 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/09 22:32:48 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 typedef int	(*t_function)(va_list);
 
 int		ft_printf(const char *format, ...);
+int		jumptable(const char *format, int specifier, va_list va_ptr);
 
 int		ft_conversion(unsigned long num, int base, char *characters);
 
