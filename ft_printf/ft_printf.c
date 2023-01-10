@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 22:04:06 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/09 22:34:40 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/10 16:03:37 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int	jumptable(const char *format, int specifier, va_list va_ptr)
 {
 	int					count;
-	const t_function	function_array[126] = {
+	static t_function	function_array[126] = {
 	['c'] = ft_printf_c,
 	['s'] = ft_printf_s,
 	['p'] = ft_printf_p,
@@ -36,9 +36,10 @@ int	jumptable(const char *format, int specifier, va_list va_ptr)
 
 int	ft_printf(const char *format, ...)
 {
-	va_list				va_ptr;
-	int					i;
-	int					count;
+	va_list		va_ptr;
+	int			i;
+	int			count;
+	int			tmp;
 
 	va_start(va_ptr, format);
 	count = 0;
@@ -47,11 +48,15 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			count += jumptable(format, (i + 1), va_ptr);
+			tmp = jumptable(format, (i + 1), va_ptr);
+			if (tmp < 0)
+				return (-1);
+			count += tmp;
 			i += 2;
 			continue ;
 		}
-		write(1, &format[i], 1);
+		if (write(1, &format[i], 1) == -1)
+			return (-1);
 		count++;
 		i++;
 	}
