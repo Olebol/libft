@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 22:04:06 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/10 19:56:44 by opelser       ########   odam.nl         */
+/*   Updated: 2023/01/12 17:33:23 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,21 @@ static int	ft_parse(const char *format, va_list va_ptr)
 
 static int	jumptable(const char *format, int specifier, va_list va_ptr)
 {
-	int					count;
-	int					searched;
-	static t_function	function_array[9] = {
-	[0] = ft_printf_c,
-	[1] = ft_printf_s,
-	[2] = ft_printf_p,
-	[3] = ft_printf_di,
-	[4] = ft_printf_di,
-	[5] = ft_printf_u,
-	[6] = ft_printf_hex,
-	[7] = ft_printf_hexup,
-	[8] = ft_printf_percent,
+	int						count;
+	int						searched;
+	static const t_function	function_array[256] = {
+	['c'] = ft_printf_c,
+	['s'] = ft_printf_s,
+	['p'] = ft_printf_p,
+	['d'] = ft_printf_di,
+	['i'] = ft_printf_di,
+	['u'] = ft_printf_u,
+	['x'] = ft_printf_hex,
+	['X'] = ft_printf_hexup,
+	['%'] = ft_printf_percent,
 	};
 
-	searched = ft_strrchr("cspdiuxX%", format[specifier]);
-	if (searched < 0)
+	if (function_array[(unsigned char) format[specifier]] == NULL)
 	{
 		if (write(1, "%", 1) == -1)
 			return (-1);
@@ -83,7 +82,7 @@ static int	jumptable(const char *format, int specifier, va_list va_ptr)
 			return (-1);
 		return (2);
 	}
-	count = function_array[searched](va_ptr);
+	count = function_array[(unsigned char )format[specifier]](va_ptr);
 	return (count);
 }
 
