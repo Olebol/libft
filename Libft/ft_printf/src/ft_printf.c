@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 22:04:06 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/12 17:33:23 by opelser       ########   odam.nl         */
+/*   Updated: 2023/03/07 20:31:15 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int				ft_printf(const char *format, ...);
 static int		ft_parse(const char *format, va_list va_ptr);
 static int		jumptable(const char *format, int specifier, va_list va_ptr);
 static int		percent_at_end(int count);
-static int		ft_strrchr(const char *s, int c);
 
 int	ft_printf(const char *format, ...)
 {
@@ -61,7 +60,6 @@ static int	ft_parse(const char *format, va_list va_ptr)
 static int	jumptable(const char *format, int specifier, va_list va_ptr)
 {
 	int						count;
-	int						searched;
 	static const t_function	function_array[256] = {
 	['c'] = ft_printf_c,
 	['s'] = ft_printf_s,
@@ -82,7 +80,7 @@ static int	jumptable(const char *format, int specifier, va_list va_ptr)
 			return (-1);
 		return (2);
 	}
-	count = function_array[(unsigned char )format[specifier]](va_ptr);
+	count = function_array[(unsigned char) format[specifier]](va_ptr);
 	return (count);
 }
 
@@ -91,20 +89,6 @@ static int	percent_at_end(int count)
 	if ((write(1, "%", 1)) == -1)
 		return (-1);
 	return (count + 1);
-}
-
-static int	ft_strrchr(const char *s, int c)
-{
-	int		i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (char) c)
-			return (i);
-		i++;
-	}
-	return (-1);
 }
 
 // #include <stdio.h>

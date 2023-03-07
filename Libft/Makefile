@@ -1,66 +1,52 @@
-NAME := libft.a
+NAME		:= libft.a
+NICKNAME	:= COMPLETE LIBFT
 
-CC := gcc
+# Directories
+LIBFT_DIR	:= libft
+GNL_DIR		:= get_next_line
+PRINTF_DIR	:= ft_printf
 
-CFLAGS := -Wall -Werror -Wextra
+# Files
+PRINTF		:=	$(PRINTF_DIR)/ft_printf.a
+GNL			:=	$(GNL_DIR)/get_next_line.a
+LIBFT		:=	$(LIBFT_DIR)/libft.a
 
-BUILDDIR := obj
+# Colours
+GREEN		:= \033[32;1m
+YELLOW		:= \033[33;1m
+RED			:= \033[31;1m
+BOLD		:= \033[1m
+RESET		:= \033[0m
 
-SRC :=	ft_isalnum.c	\
-		ft_isascii.c	\
-		ft_isprint.c	\
-		ft_memmove.c	\
-		ft_strlcat.c	\
-		ft_strlen.c		\
-		ft_bzero.c		\
-		ft_isalpha.c	\
-		ft_isdigit.c	\
-		ft_memcpy.c		\
-		ft_memset.c		\
-		ft_strlcpy.c	\
-		ft_toupper.c	\
-		ft_tolower.c	\
-		ft_strchr.c		\
-		ft_strrchr.c	\
-		ft_strncmp.c	\
-		ft_memchr.c		\
-		ft_memcmp.c		\
-		ft_strnstr.c	\
-		ft_atoi.c		\
-		ft_calloc.c		\
-		ft_strdup.c		\
-		ft_substr.c		\
-		ft_strjoin.c	\
-		ft_strtrim.c	\
-		ft_split.c		\
-		ft_itoa.c		\
-		ft_strmapi.c	\
-		ft_striteri.c	\
-		ft_putchar_fd.c	\
-		ft_putstr_fd.c	\
-		ft_putendl_fd.c	\
-		ft_putnbr_fd.c
-
-OBJ := ${addprefix ${BUILDDIR}/, ${SRC:.c=.o}}
-
+# Rules
 all: ${NAME}
 
-${NAME}: ${OBJ}
+$(NAME): $(PRINTF) $(GNL) $(LIBFT)
+	@echo "$(YELLOW)$(BOLD)Compiling $(NICKNAME)...$(RESET)"
 	@ar rc ${NAME} $^
+	@echo "$(GREEN)$(BOLD)$(NICKNAME) Compiled$(RESET)"
 
-${BUILDDIR}:
-	@mkdir ${BUILDDIR}
+$(PRINTF):
+	@make -C $(PRINTF_DIR)
 
-${BUILDDIR}/%.o: %.c | ${BUILDDIR}
-	@$(CC) $(CFLAGS) -c $< -o $@
+$(GNL):
+	@make -C $(GNL_DIR)
+
+$(LIBFT):
+	@make -C $(LIBFT_DIR)
 
 clean:
-	@rm -rf ${BUILDDIR}
-	@rm -f a.out
+	@make clean -C $(PRINTF_DIR)
+	@make clean -C $(GNL_DIR)
+	@make clean -C $(LIBFT_DIR)
 
-fclean: clean
-	@rm -f ${NAME}
+fclean:
+	@echo "$(RED)$(BOLD)Cleaning $(NICKNAME)...$(RESET)"
+	@make fclean -C $(PRINTF_DIR)
+	@make fclean -C $(GNL_DIR)
+	@make fclean -C $(LIBFT_DIR)
+	@rm -rf ${NAME}
 
 re: fclean ${NAME}
 
-.PHONY: all clean fclean re
+.PHONY: all norminette clean fclean re
