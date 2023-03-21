@@ -7,9 +7,9 @@ GNL_DIR		:= get_next_line
 PRINTF_DIR	:= ft_printf
 
 # Files
-PRINTF		:=	$(PRINTF_DIR)/ft_printf.a
-GNL			:=	$(GNL_DIR)/get_next_line.a
-LIBFT		:=	$(LIBFT_DIR)/libft.a
+PRINTF		:=	$(PRINTF_DIR)/obj/*.o
+GNL			:=	$(GNL_DIR)/obj/*.o
+LIBFT		:=	$(LIBFT_DIR)/obj/*.o
 
 # Colours
 GREEN		:= \033[32;1m
