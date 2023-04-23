@@ -1,7 +1,7 @@
 .DS_Store
-a.out
+*.out
 *.a
+*.exe
 *.json
-get_next_line/test.txt
-get_next_line/test.txt
-get_next_line/test.txt
+*.o
+obj

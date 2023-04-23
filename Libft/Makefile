@@ -1,10 +1,10 @@
 NAME		:= libft.a
-NICKNAME	:= COMPLETE LIBFT
+NICKNAME	:= LIBFT
 
 # Directories
-LIBFT_DIR	:= libft
-GNL_DIR		:= get_next_line
-PRINTF_DIR	:= ft_printf
+LIBFT_DIR	:= src/libft
+GNL_DIR		:= src/get_next_line
+PRINTF_DIR	:= src/ft_printf
 
 # Files
 PRINTF		:=	$(PRINTF_DIR)/obj/*.o
@@ -19,12 +19,14 @@ BOLD		:= \033[1m
 RESET		:= \033[0m
 
 # Rules
-all: ${NAME}
+all: startmsg ${NAME}
 
 $(NAME): $(PRINTF) $(GNL) $(LIBFT)
-	@echo "$(YELLOW)$(BOLD)Compiling $(NICKNAME)...$(RESET)"
 	@ar rc ${NAME} $^
-	@echo "$(GREEN)$(BOLD)$(NICKNAME) Compiled$(RESET)"
+	@printf "\t\t%b%s%b\n" "$(GREEN)$(BOLD)" "[OK]" "$(RESET)"
+
+startmsg:
+	@printf "%b%s%b" "$(YELLOW)$(BOLD)" "Compiling $(NICKNAME)..." "$(RESET)"
 
 $(PRINTF):
 	@make -C $(PRINTF_DIR)
@@ -36,12 +38,13 @@ $(LIBFT):
 	@make -C $(LIBFT_DIR)
 
 clean:
+	@echo "$(RED)$(BOLD)Cleaning $(NICKNAME)...$(RESET)"
 	@make clean -C $(PRINTF_DIR)
 	@make clean -C $(GNL_DIR)
 	@make clean -C $(LIBFT_DIR)
 
 fclean:
-	@echo "$(RED)$(BOLD)Cleaning $(NICKNAME)...$(RESET)"
+	@echo "$(RED)$(BOLD)Fully cleaning $(NICKNAME)...$(RESET)"
 	@make fclean -C $(PRINTF_DIR)
 	@make fclean -C $(GNL_DIR)
 	@make fclean -C $(LIBFT_DIR)
@@ -49,4 +52,4 @@ fclean:
 
 re: fclean ${NAME}
 
-.PHONY: all norminette clean fclean re
+.PHONY: all startmsg norminette clean fclean re
