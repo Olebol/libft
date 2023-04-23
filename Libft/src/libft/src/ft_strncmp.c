@@ -27,12 +27,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
-
-// int	main(void)
-// {
-// 	const char		s1[] = "this is a test sentence ";
-// 	const char		s2[] = "this is a test sentence\200 too";
-
-// 	printf("ret ft_strncmp: \t%d\n", ft_strncmp(s1, s2, 25));
-// 	printf("ret strncmp: \t\t%d\n", strncmp(s1, s2, 25));
-// }
