@@ -12,14 +12,6 @@
 
 #include "libft.h"
 
-// char	ft_test(unsigned int i, char c)
-// {
-// 	char	ptr;
-
-// 	i = 32;
-// 	return (c - i);
-// }
-
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char			*s2;
@@ -40,12 +32,3 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	s2[i] = 0;
 	return (s2);
 }
-
-// #include <stdio.h>
-// int	main()
-// {
-// 	char	s[] = "abcdefg";
-
-// 	printf("result: %s", ft_strmapi(s, ft_test));
-// 	return (0);
-// }

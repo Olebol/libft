@@ -25,12 +25,3 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (NULL);
 }
-
-// #include <stdio.h>
-// int	main()
-// {
-// 	const char	str[] = "bababooey";
-
-// 	printf("%s", ft_strrchr(str, 'b'));
-// 	return;
-// }

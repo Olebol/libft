@@ -59,10 +59,3 @@ char	*ft_itoa(int n)
 	ft_makearr(res, n, len - 1);
 	return (res);
 }
-
-// #include "libft.h"
-// int	main()
-// {
-// 	printf("\n\nfinal result: %s\n", ft_itoa(INT32_MIN));
-// 	return(0);
-// }

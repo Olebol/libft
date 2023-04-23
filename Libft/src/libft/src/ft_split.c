@@ -82,11 +82,3 @@ char	**ft_split(char const *s, char c)
 	ptr_arr[i] = NULL;
 	return (ptr_arr);
 }
-
-// int	main()
-// {
-// 	const char		str[] = "hey";
-// 	const char		c = '.';
-// 	ft_split(str, c);
-// 	return (0);
-// }

@@ -29,20 +29,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	dst[dst_len + i] = '\0';
 	return (src_len + dst_len);
 }
-
-// #include "libft.h"
-// int	main(void)
-// {
-// 	char	str[30] = "hello ";
-// 	char	str2[30] = "world";
-// 	size_t	dstsize = 31;
-
-// 	printf("%zu\n", ft_strlcat(str, str2, dstsize));
-// 	printf("%s\n", str);
-
-// 	char	str3[30] = "hello ";
-// 	char	str4[30] = "world";
-
-// 	printf("\n%zu\n", strlcat(str3, str4, dstsize));
-// 	printf("%s\n", str3);
-// }

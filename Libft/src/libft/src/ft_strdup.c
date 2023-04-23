@@ -37,11 +37,3 @@ char	*ft_strdup(const char *s1)
 	result_string[i] = '\0';
 	return (result_string);
 }
-
-// #include "libft.h"
-// int	main(void)
-// {
-// 	const char	s[] = "this is the string that's being duplicated";
-// 	printf("return ft_strdup: \t|%s|\n", ft_strdup(s));
-// 	printf("return strdup: \t\t|%s|\n", strdup(s));
-// }

@@ -90,29 +90,3 @@ static int	percent_at_end(int count)
 		return (-1);
 	return (count + 1);
 }
-
-// #include <stdio.h>
-// int		main(void)
-// {
-// 	char	c = 'X';
-// 	char	*s = "XXXX";
-// 	char	*p = "pointer test";
-// 	int		d = -78901;
-// 	unsigned int u = 198296479;
-// 	int		x = 123456789;
-
-// 	int		ret;
-
-// 	ret = ft_printf("my printf:\n\nchar: %c\nstr: %s\nptr: %p\n", c, s, p);
-// 	ret += ft_printf("dec: %d\nuns: %u\nhex: %x\nhexup: %X\n", d, u, x, x);
-// 	ret += ft_printf("percent edge cases: | %%%rabc | %%% | %\0don't see this");
-
-// 	printf("\n\nreturn: %d\n\n| --------------------------- |", ret);
-
-// 	ret = printf("\n\nprintf:\n\nchar: %c\nstr: %s\nptr: %p\n", c, s, p);
-// 	ret += printf("dec: %d\nuns: %u\nhex: %x\nhexup: %X\n", d, u, x, x);
-// 	// ret += printf("percent edge cases: | %%%rabc | %%% | %\0don't see this");
-
-// 	printf("\n\nreturn: %d\n", ret);
-// 	return (0);
-// }

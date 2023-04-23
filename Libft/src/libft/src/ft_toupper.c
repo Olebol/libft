@@ -16,11 +16,3 @@ int	ft_toupper(int c)
 		c -= 32;
 	return (c);
 }
-
-// #include "libft.h"
-// int	main(void)
-// {
-// 	printf("my: %c", ft_toupper('a'));
-// 	printf("\nactual: %c\n", toupper('a'));
-// 	return (0);
-// }

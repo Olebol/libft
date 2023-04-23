@@ -26,20 +26,3 @@ void	*ft_memset(void *b, int c, size_t len)
 	}
 	return (b);
 }
-
-// #include <stdio.h>
-// #include <string.h>
-// int main()
-// {
-// 	char str2[50] = "This is a test sentence to check for memset";
-//     printf("Before actual memset(): %s\n", str2);
-//     memset(NULL + 13, '.', 2*sizeof(int));
-//     printf("After memset():  %s\n\n\n", str2);
-
-// 	char str[50] = "This is a test sentence to check for memset";
-//     printf("\nBefore my memset(): %s\n", str);
-//     ft_memset(NULL + 13, '.', 2*sizeof(int));
-// 	printf("After memset():  %s", str);
-
-//     return 0;
-// }

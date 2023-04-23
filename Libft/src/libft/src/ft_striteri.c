@@ -12,13 +12,6 @@
 
 #include "libft.h"
 
-// void	ft_test(unsigned int i, char *s_char)
-// {
-// 	i = 32;
-// 	*s_char -= i;
-// 	printf("s_char : %c |\n", *s_char);
-// }
-
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	unsigned int	i;
@@ -32,11 +25,3 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 		i++;
 	}
 }
-
-// int	main(void)
-// {
-// 	char	str[] = "abcdefgh";
-
-// 	ft_striteri(str, ft_test);
-// 	printf("\nend result: %s\n", str);
-// }
