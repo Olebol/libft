@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/24 17:06:26 by opelser       #+#    #+#                 */
-/*   Updated: 2023/04/19 14:28:33 by opelser       ########   odam.nl         */
+/*   Updated: 2023/04/25 22:36:16 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static int	get_first_num(const char *str, int *sign)
 	int		i;
 
 	i = 0;
+	*sign = 1;
 	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
@@ -31,8 +32,6 @@ static int	get_first_num(const char *str, int *sign)
 			*sign = -1;
 		i++;
 	}
-	else
-		*sign = 1;
 	return (i);
 }
 
