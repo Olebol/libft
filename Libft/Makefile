@@ -21,12 +21,12 @@ RESET		:= \033[0m
 # Rules
 all: startmsg ${NAME}
 
-$(NAME): $(PRINTF) $(GNL) $(LIBFT)
-	@ar rc ${NAME} $^
-	@printf "\t\t%b%s%b\n" "$(GREEN)$(BOLD)" "[OK]" "$(RESET)"
-
 startmsg:
 	@printf "%b%s%b" "$(YELLOW)$(BOLD)" "Compiling $(NICKNAME)..." "$(RESET)"
+
+$(NAME): $(PRINTF) $(GNL) $(LIBFT)
+	@ar rc ${NAME} $(PRINTF) $(GNL) $(LIBFT)
+	@printf "\t\t%b%s%b\n" "$(GREEN)$(BOLD)" "[OK]" "$(RESET)"
 
 $(PRINTF):
 	@make -C $(PRINTF_DIR)
