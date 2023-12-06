@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.h                                        :+:    :+:            */
+/*   ft_isalnum.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: opelser <opelser@student.codam.nl>           +#+                     */
+/*   By: kkalika <kkalika@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/05 22:04:57 by opelser       #+#    #+#                 */
-/*   Updated: 2023/01/10 19:03:34 by opelser       ########   odam.nl         */
+/*   Created: 2022/10/03 18:42:20 by opelser       #+#    #+#                 */
+/*   Updated: 2023/05/03 21:08:21 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include <unistd.h>
-# include "ft_conversions.h"
-
-typedef int	(*t_function)(va_list);
-
-int		ft_printf(const char *format, ...);
-
-#endif
+int	ft_isalnum(int c)
+{
+	if ((c >= '0' && c <= '9')
+		|| (c >= 'a' && c <= 'z')
+		|| (c >= 'A' && c <= 'Z'))
+		return (1);
+	return (0);
+}

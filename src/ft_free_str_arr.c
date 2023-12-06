@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strchr.c                                        :+:    :+:            */
+/*   ft_free_str_arr.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/19 19:33:52 by opelser       #+#    #+#                 */
-/*   Updated: 2022/11/14 18:13:18 by opelser       ########   odam.nl         */
+/*   Created: 2023/05/03 21:02:56 by opelser       #+#    #+#                 */
+/*   Updated: 2023/05/10 15:28:08 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stddef.h"
+#include "stdlib.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_free_str_arr(char **strings)
 {
-	while (*s)
+	int		i;
+
+	i = 0;
+	if (!strings)
+		return ;
+	while (strings[i])
 	{
-		if (*s == (char) c)
-			return ((char *)s);
-		s++;
+		free(strings[i]);
+		i++;
 	}
-	if (*s == (char) c)
-		return ((char *)s);
-	return (NULL);
+	free(strings);
 }
