@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_strjoin.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: opelser <opelser@student.codam.nl>           +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/24 23:33:42 by opelser       #+#    #+#                 */
-/*   Updated: 2023/05/29 19:55:49 by opelser       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/24 23:33:42 by opelser           #+#    #+#             */
+/*   Updated: 2024/02/22 16:10:10 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,6 @@ char	*ft_strjoin_replace(char *s1, char const *s2)
 {
 	char	*tmp;
 
-	if (!s1)
-		return (NULL);
-	if (!s2)
-		return (s1);
 	tmp = ft_strjoin(s1, s2);
 	free(s1);
 	return (tmp);

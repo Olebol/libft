@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
+/*   ft_printf_conversions.c                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/03 16:43:43 by opelser       #+#    #+#                 */
-/*   Updated: 2022/11/08 22:29:41 by opelser       ########   odam.nl         */
+/*   Created: 2023/01/08 19:56:28 by opelser       #+#    #+#                 */
+/*   Updated: 2023/01/10 16:52:25 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-size_t	ft_strlen(const char *str)
+int	ft_conversion(unsigned long num, int base, char *characters)
 {
-	size_t		i;
+	static int	count;
+	int			org;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	org = count;
+	if (num / base != 0)
+	{
+		if (ft_conversion((num / base), base, characters) == -1)
+			return (-1);
+	}
+	if (write(1, &characters[num % base], 1) == -1)
+		return (-1);
+	else
+		count++;
+	return (count - org);
 }
