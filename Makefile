@@ -87,7 +87,7 @@ all: ${NAME}
 
 $(NAME): $(OBJ)
 	@ printf	"$(YELLOW)Archiving $(NICKNAME)...$(RESET)"
-	@ ar rc $@ $<
+	@ ar rc $@ $(OBJ)
 	@ printf	"\t\t\t$(GREEN)$(BOLD)[OK]$(RESET)\n"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HDR) | $(OBJ_DIR)
