@@ -24,7 +24,7 @@ SRC_FILES :=	$(addprefix $(LIBFT_DIR)/,	\
 					ft_isalnum.c			\
 					ft_isascii.c			\
 					ft_isprint.c			\
-					ft_isprint.c			\
+					ft_isspace.c			\
 					ft_memmove.c			\
 					ft_strlcat.c			\
 					ft_strlen.c				\
