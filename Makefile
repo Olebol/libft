@@ -12,7 +12,10 @@ GNL_DIR			:= get_next_line
 # Compiler flags
 CC				:= gcc
 CFLAGS			:= -Wall -Werror -Wextra
-MAKEFLAGS		:= --no-print-directory
+
+ifdef DEBUG
+	CFLAGS		+= -g -fsanitize=address
+endif
 
 # Includes
 HDR_FILES :=	libft.h						\
@@ -68,6 +71,7 @@ SRC_FILES :=	$(addprefix $(LIBFT_DIR)/,	\
 					ft_convert_nums.c		\
 				)							\
 				$(addprefix $(GNL_DIR)/,	\
+					get_line.c				\
 					get_next_line.c			\
 					get_next_line_utils.c	\
 				)
