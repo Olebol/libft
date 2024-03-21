@@ -47,6 +47,8 @@ SRC_FILES :=	$(addprefix $(LIBFT_DIR)/,	\
 					ft_memcmp.c				\
 					ft_strnstr.c			\
 					ft_err_atoi.c			\
+					ft_atof.c				\
+					ft_atoi.c				\
 					ft_calloc.c				\
 					ft_strdup.c				\
 					ft_substr.c				\
